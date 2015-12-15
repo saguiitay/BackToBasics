@@ -1,45 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BracketsValidation
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            List<char> openingBrackets = new List<char> { '[', '(', '{'};
-            List<char> closingBrackets = new List<char> { ']', ')', '}'};
+            var inputs = new[]
+                {
+                    "(1+2)",
+                    "(1+[2*3])",
+                    "(1+[2)]",
+                    "{(1+1)*2}/[3-1)]"
+                };
 
-            Stack<int> currentBrackets = new Stack<int>();
-
-            var input = "{(1+1)*2}/[3-1)]";
-            foreach (var ch in input)
+            foreach (var input in inputs)
             {
-                var o = openingBrackets.IndexOf(ch);
-                if (o >= 0)
-                {
-                    currentBrackets.Push(o);
-                    continue;
-                }
-                var c = closingBrackets.IndexOf(ch);
-                if (c >= 0)
-                {
-                    if (currentBrackets.Peek() == c)
-                        currentBrackets.Pop();
-                    else
-                    {
-                        Console.WriteLine("Invalid input");
-                        return;
-                    }
-                }
+                var isValid = Validator.IsValid(input);
+
+                Console.WriteLine("{0}: {1} input", input, isValid ? "valid" : "invalid");
             }
-            if (currentBrackets.Count > 0)
-                Console.WriteLine("Invalid input");
-            else
-                Console.WriteLine("Valid input");
         }
     }
 }
