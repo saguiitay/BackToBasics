@@ -52,8 +52,14 @@
     <Compile Include="SetAll\SetAll.cs" />
     <Compile Include="Suffix\Node.cs" />
     <Compile Include="Suffix\Suffix.cs" />
+    <Compile Include="Trees\BinaryTree.cs" />
     <Compile Include="Trees\BinarySearchTree.cs" />
+    <Compile Include="Trees\BinaryTreeStringSerializer.cs" />
+    <Compile Include="Trees\Enumerators\InOrderEnumerator.cs" />
+    <Compile Include="Trees\ITree.cs" />
+    <Compile Include="Trees\Enumerators\LevelOrderEnumerator.cs" />
     <Compile Include="Trees\Node.cs" />
+    <Compile Include="Trees\Enumerators\PreOrderEnumerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
