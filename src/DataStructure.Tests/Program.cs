@@ -178,6 +178,7 @@ namespace DataStructure.Tests
             Console.WriteLine(BinaryTreeStringSerializer.AsStringCompact(loadedTreeCompact));
             Console.WriteLine(BinaryTreeStringSerializer.AsString(loadedTreeCompact));
 
+            Console.ReadLine();
         }
     }
 }
