@@ -10,6 +10,8 @@ namespace DataStructure.Tests
         {
             MainTree();
 
+            //MainBinaryTree();
+
             //MainSetAll();
         }
 
@@ -41,7 +43,7 @@ namespace DataStructure.Tests
 
         }
 
-        static void MainTree()
+        static void MainBinaryTree()
         {
             //var bst = new BinarySearchTree<int>();
             //bst.Insert(5);
@@ -97,6 +99,84 @@ namespace DataStructure.Tests
             var levelOrder = bst.GetLevelOrderEnumerator();
             while (levelOrder.MoveNext())
                 Console.Write(" {0} ", levelOrder.Current.Value);
+
+        }
+
+        static void MainTree()
+        {
+            var tree = new BinaryTree<int>();
+            tree.Root = new Node<int> { Value = 1};
+
+            var node2 = tree.Root.Left = new Node<int>(2);
+            var node3 = tree.Root.Right = new Node<int>(3);
+
+            var node4 = node2.Left = new Node<int>(4);
+            var node5 = node2.Right = new Node<int>(5);
+
+            var node6 = node4.Right = new Node<int>(6);
+            var node7 = node4.Left = new Node<int>(7);
+
+            var node0 = node3.Right = new Node<int>(0);
+            var node8 = node0.Left = new Node<int>(8);
+
+            //        1
+            //      /  \
+            //     2     3
+            //    / \     \
+            //   4   5     0
+            //  / \       /
+            // 7   6     8
+
+
+            for (int i = 0; i < 12; i++)
+                Console.WriteLine("Contains {0}: {1}", i, tree.FindNode(i) != null);
+
+            Console.WriteLine();
+
+            // Depth PreOrder: 1 2 4 7 6 5 3 0 8
+            Console.WriteLine("PreOrder: ");
+            var preOrder = tree.GetPreOrderEnumerator();
+            while (preOrder.MoveNext())
+                Console.Write(" {0} ", preOrder.Current.Value);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // Depth InOrder: 7 4 6 2 5 1 3 8 0
+            Console.WriteLine("InOrder: ");
+            var inOrder = tree.GetInOrderEnumerator();
+            while (inOrder.MoveNext())
+                Console.Write(" {0} ", inOrder.Current.Value);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // Depth LevelOrder: 1 2 3 4 5 0 7 6 8
+            Console.WriteLine("LevelOrder: ");
+            var levelOrder = tree.GetLevelOrderEnumerator();
+            while (levelOrder.MoveNext())
+                Console.Write(" {0} ", levelOrder.Current.Value);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("String representation: ");
+            var str = BinaryTreeStringSerializer.AsString(tree);
+            Console.WriteLine(str);
+
+            var loadedTree = BinaryTreeStringSerializer.FromString(str);
+            Console.WriteLine(BinaryTreeStringSerializer.AsString(loadedTree));
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("String representation Compact: ");
+            var strCompact = BinaryTreeStringSerializer.AsStringCompact(tree);
+            Console.WriteLine(strCompact);
+
+            var loadedTreeCompact = BinaryTreeStringSerializer.FromStringCompact(strCompact);
+            Console.WriteLine(BinaryTreeStringSerializer.AsStringCompact(loadedTreeCompact));
+            Console.WriteLine(BinaryTreeStringSerializer.AsString(loadedTreeCompact));
 
         }
     }
