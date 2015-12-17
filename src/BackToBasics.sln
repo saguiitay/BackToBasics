@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillAlgo", "FillAlgo\FillAl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure.Tests", "DataStructure.Tests\DataStructure.Tests.csproj", "{BD90DCE0-AF91-418E-ADED-C7AC2B9E4E65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Strings\Strings.csproj", "{D40546BB-1BFC-458E-ADD8-7B2B97FED982}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BD90DCE0-AF91-418E-ADED-C7AC2B9E4E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD90DCE0-AF91-418E-ADED-C7AC2B9E4E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD90DCE0-AF91-418E-ADED-C7AC2B9E4E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40546BB-1BFC-458E-ADD8-7B2B97FED982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40546BB-1BFC-458E-ADD8-7B2B97FED982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40546BB-1BFC-458E-ADD8-7B2B97FED982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40546BB-1BFC-458E-ADD8-7B2B97FED982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
