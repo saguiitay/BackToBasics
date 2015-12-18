@@ -178,7 +178,93 @@ namespace DataStructure.Tests
             Console.WriteLine(BinaryTreeStringSerializer.AsStringCompact(loadedTreeCompact));
             Console.WriteLine(BinaryTreeStringSerializer.AsString(loadedTreeCompact));
 
+            var pre = new[] {1, 2, 4, 7, 6, 5, 3, 0, 8};
+            var ino = new[] {7, 4, 6, 2, 5, 1, 3, 8, 0};
+
+            var reconstructed = BinaryTreeStringSerializer.Reconstruct(pre, ino);
+            Console.WriteLine(BinaryTreeStringSerializer.AsString(reconstructed));
+
             Console.ReadLine();
         }
+
+        static void MainTree2()
+        {
+            var tree = new BinaryTree<int> {Root = new Node<int> {Value = 1}};
+            var node2 = tree.Root.Right = new Node<int>(2);
+            var node3 = node2.Right = new Node<int>(3);
+            var node4 = node3.Right = new Node<int>(4);
+            var node5 = node4.Right = new Node<int>(5);
+            var node6 = node5.Right = new Node<int>(6);
+            var node7 = node6.Right = new Node<int>(7);
+            var node8 = node7.Right = new Node<int>(8);
+
+            var tree2 = new BinaryTree<int> {Root = new Node<int> {Value = 1}};
+            var node2b = tree2.Root.Left = new Node<int>(2);
+            var node3b = node2b.Left = new Node<int>(3);
+            var node4b = node3b.Left = new Node<int>(4);
+            var node5b = node4b.Left = new Node<int>(5);
+            var node6b = node5b.Left = new Node<int>(6);
+            var node7b = node6b.Left = new Node<int>(7);
+            var node8b = node7b.Left = new Node<int>(8);
+
+            // 1
+            //  \
+            //   2
+            //    \
+            //    ...
+            //      \
+            //       8
+
+
+            // Depth PreOrder: 1 2 3 4 5 6 7 8
+            Console.WriteLine("PreOrder: ");
+            var preOrder = tree.GetPreOrderEnumerator();
+            while (preOrder.MoveNext())
+                Console.Write(" {0} ", preOrder.Current.Value);
+            Console.WriteLine();
+            var preOrder2 = tree2.GetPreOrderEnumerator();
+            while (preOrder2.MoveNext())
+                Console.Write(" {0} ", preOrder2.Current.Value);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // Depth InOrder: 1 2 3 4 5 6 7 8
+            Console.WriteLine("InOrder: ");
+            var inOrder = tree.GetInOrderEnumerator();
+            while (inOrder.MoveNext())
+                Console.Write(" {0} ", inOrder.Current.Value);
+            Console.WriteLine();
+            var inOrder2 = tree2.GetInOrderEnumerator();
+            while (inOrder2.MoveNext())
+                Console.Write(" {0} ", inOrder2.Current.Value);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // Depth LevelOrder: 1 2 3 4 5 6 7 8
+            Console.WriteLine("LevelOrder: ");
+            var levelOrder = tree.GetLevelOrderEnumerator();
+            while (levelOrder.MoveNext())
+                Console.Write(" {0} ", levelOrder.Current.Value);
+            Console.WriteLine();
+            var levelOrder2 = tree2.GetLevelOrderEnumerator();
+            while (levelOrder2.MoveNext())
+                Console.Write(" {0} ", levelOrder2.Current.Value);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("String representation: ");
+            Console.WriteLine(BinaryTreeStringSerializer.AsString(tree));
+            Console.WriteLine(BinaryTreeStringSerializer.AsStringCompact(tree));
+            Console.WriteLine();
+            Console.WriteLine(BinaryTreeStringSerializer.AsString(tree2));
+            Console.WriteLine(BinaryTreeStringSerializer.AsStringCompact(tree2));
+
+            Console.ReadLine();
+        }
+
+
     }
 }

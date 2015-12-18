@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -143,6 +144,36 @@ namespace DataStructures.Trees
             }
 
             return tree;
+        }
+
+        public static BinaryTree<T> Reconstruct<T>(T[] preoder, T[] inorder)
+        {
+            var root = ReconstructNodes(new ArraySegment<T>(preoder), new ArraySegment<T>(inorder));
+            return new BinaryTree<T> {Root = root};
+        }
+
+        private static Node<T> ReconstructNodes<T>(ArraySegment<T> preoder, ArraySegment<T> inorder)
+        {
+            if (preoder.Count == 0)
+                return null;
+
+            var root = new Node<T>(preoder.First());
+            if (preoder.Count == 1)
+                return root;
+
+            var indexOfRoot = Array.IndexOf(inorder.Array, preoder.First(), inorder.Offset) - inorder.Offset;
+
+
+            var leftInorder = new ArraySegment<T>(inorder.Array, inorder.Offset, indexOfRoot);
+            var rightInorder = new ArraySegment<T>(inorder.Array, inorder.Offset+indexOfRoot + 1, inorder.Count - indexOfRoot - 1);
+
+            var leftPreorder = new ArraySegment<T>(preoder.Array, preoder.Offset+1, leftInorder.Count);
+            var rightPreorder = new ArraySegment<T>(preoder.Array, preoder.Offset + 1 + leftInorder.Count, rightInorder.Count);
+
+            root.Left = ReconstructNodes(leftPreorder, leftInorder);
+            root.Right = ReconstructNodes(rightPreorder, rightInorder);
+
+            return root;
         }
     }
 }
