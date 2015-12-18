@@ -1,5 +1,6 @@
 ﻿using System;
 using DataStructures;
+using DataStructures.LinkedList;
 using DataStructures.Trees;
 
 namespace DataStructure.Tests
@@ -8,14 +9,42 @@ namespace DataStructure.Tests
     {
         static void Main()
         {
-            MainTree();
+            MainLinkedList();
+
+            //MainTree();
 
             //MainBinaryTree();
 
             //MainSetAll();
         }
 
+        static void MainLinkedList()
+        {
+            var singleLinkedList = new SingleLinkedList<int>();
+            singleLinkedList.Add(2);
+            singleLinkedList.Add(4);
+            singleLinkedList.Add(6);
+            singleLinkedList.Add(8);
+            singleLinkedList.Add(1);
+            singleLinkedList.Add(3);
+            singleLinkedList.Add(5);
+            singleLinkedList.Add(7);
+            singleLinkedList.Add(9);
 
+            foreach (var v in singleLinkedList)
+                Console.Write(" {0} ", v);
+
+            Console.WriteLine();
+            singleLinkedList.Reverse();
+
+            foreach (var v in singleLinkedList)
+                Console.Write(" {0} ", v);
+
+            Console.WriteLine();
+
+            Console.ReadLine();
+
+        }
         static void MainSetAll()
         {
             var setAll = new DataStructures.SetAll.SetAll<int>(10);

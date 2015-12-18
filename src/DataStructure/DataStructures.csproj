@@ -48,6 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinkedList\DoubleLinkNode.cs" />
+    <Compile Include="LinkedList\SingleLinkedList.cs" />
+    <Compile Include="LinkedList\Enumerators\SingleLinkedListEnumerator.cs" />
+    <Compile Include="LinkedList\SingleLinkNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetAll\SetAll.cs" />
     <Compile Include="Suffix\Node.cs" />
