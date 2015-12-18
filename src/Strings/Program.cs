@@ -10,12 +10,39 @@ namespace Strings
     {
         static void Main(string[] args)
         {
-            foreach (var perm in PermutationsRecursive("abcdef"))
+            var groups = GroupBySimilarPermutations(new[] {"cat", "act", "truck", "kcurt", "trkuc"});
+            foreach (var @group in groups)
+            {
+                Console.WriteLine(string.Join(", ", @group));
+            }
+
+            foreach (var perm in PermutationsRecursive("abc"))
             {
                 Console.WriteLine(perm);
             }
             Console.ReadLine();
 
+        }
+
+        static List<List<string>> GroupBySimilarPermutations(IEnumerable<string> words)
+        {
+            Dictionary<string, List<string>> groups = new Dictionary<string, List<string>>();
+
+            foreach (var word in words)
+            {
+                var key = new string(word.ToLowerInvariant().ToCharArray().OrderBy(x => x).ToArray());
+
+                List<string> list;
+                if (!groups.TryGetValue(key, out list))
+                {
+                    list = new List<string>();
+                    groups[key] = list;
+                }
+
+                list.Add(word);
+            }
+
+            return groups.Values.ToList();
         }
 
         static IEnumerable<string> PermutationsRecursive(string text)
